@@ -4,7 +4,6 @@
   "title": "Autonomous Continuous Development (ACD) Standard Schema",
   "version": "1.0.0",
   "description": "JSON schema for validating ACD metadata in source code and trace artifacts",
-  
   "definitions": {
     "scis_metadata": {
       "type": "object",
@@ -13,16 +12,31 @@
         "AI_PHASE": {
           "type": "string",
           "description": "Cognitive segmentation - categorizes the code block into a logical, functional unit",
-          "examples": ["MEMORY_TRANSLATION", "KERNEL_DISPATCH", "STREAM_TRANSLATION"]
+          "examples": [
+            "MEMORY_TRANSLATION",
+            "KERNEL_DISPATCH",
+            "STREAM_TRANSLATION"
+          ]
         },
         "AI_STATUS": {
           "type": "string",
-          "enum": ["IMPLEMENTED", "PARTIAL", "NOT_STARTED", "FIXED", "DEPRECATED"],
+          "enum": [
+            "IMPLEMENTED",
+            "PARTIAL",
+            "NOT_STARTED",
+            "FIXED",
+            "DEPRECATED"
+          ],
           "description": "Implementation state - declares the operational maturity of the code segment"
         },
         "AI_COMPLEXITY": {
           "type": "string",
-          "enum": ["LOW", "MEDIUM", "HIGH", "CRITICAL"],
+          "enum": [
+            "LOW",
+            "MEDIUM",
+            "HIGH",
+            "CRITICAL"
+          ],
           "description": "Risk profile - quantifies the inherent cognitive difficulty or risk"
         },
         "AI_NOTE": {
@@ -124,9 +138,11 @@
           "description": "Distributed agent coordination - maximum retry attempts"
         }
       },
-      "required": ["AI_PHASE", "AI_STATUS"]
+      "required": [
+        "AI_PHASE",
+        "AI_STATUS"
+      ]
     },
-    
     "trace_artifact": {
       "type": "object",
       "description": "ACD Trace Artifact - complete diagnostic context for failures",
@@ -142,14 +158,22 @@
         },
         "event_type": {
           "type": "string",
-          "enum": ["build_error", "runtime_error", "test_failure", "validation_error"],
+          "enum": [
+            "build_error",
+            "runtime_error",
+            "test_failure",
+            "validation_error"
+          ],
           "description": "Type of event that triggered this trace"
         },
         "error_info": {
           "type": "object",
           "properties": {
             "code": {
-              "type": ["integer", "string"],
+              "type": [
+                "integer",
+                "string"
+              ],
               "description": "Error code"
             },
             "message": {
@@ -172,10 +196,15 @@
                   "description": "Function name"
                 }
               },
-              "required": ["file", "line"]
+              "required": [
+                "file",
+                "line"
+              ]
             }
           },
-          "required": ["message"]
+          "required": [
+            "message"
+          ]
         },
         "acd_context": {
           "$ref": "#/definitions/scis_metadata",
@@ -200,9 +229,12 @@
           "description": "Related fix summary documents"
         }
       },
-      "required": ["timestamp", "event_type", "error_info"]
+      "required": [
+        "timestamp",
+        "event_type",
+        "error_info"
+      ]
     },
-    
     "validation_report": {
       "type": "object",
       "description": "ACD Validation Report - metadata completeness and correctness report",
@@ -240,7 +272,12 @@
               "description": "ISO 8601 timestamp of validation"
             }
           },
-          "required": ["acd_schema_version", "files_processed", "acd_metadata_found", "timestamp_utc"]
+          "required": [
+            "acd_schema_version",
+            "files_processed",
+            "acd_metadata_found",
+            "timestamp_utc"
+          ]
         },
         "acd_metadata": {
           "type": "array",
@@ -271,7 +308,10 @@
                     "description": "ISO 8601 timestamp when metadata was extracted"
                   }
                 },
-                "required": ["file", "line"]
+                "required": [
+                  "file",
+                  "line"
+                ]
               }
             ]
           },
@@ -293,10 +333,17 @@
               },
               "severity": {
                 "type": "string",
-                "enum": ["error", "warning"]
+                "enum": [
+                  "error",
+                  "warning"
+                ]
               }
             },
-            "required": ["file", "message", "severity"]
+            "required": [
+              "file",
+              "message",
+              "severity"
+            ]
           },
           "description": "Array of validation errors and warnings"
         },
@@ -315,15 +362,22 @@
                 "type": "string"
               }
             },
-            "required": ["file", "message"]
+            "required": [
+              "file",
+              "message"
+            ]
           },
           "description": "Array of validation warnings"
         }
       },
-      "required": ["metadata", "acd_metadata", "errors", "warnings"]
+      "required": [
+        "metadata",
+        "acd_metadata",
+        "errors",
+        "warnings"
+      ]
     }
   },
-  
   "oneOf": [
     {
       "$ref": "#/definitions/scis_metadata"
@@ -334,5 +388,9 @@
     {
       "$ref": "#/definitions/validation_report"
     }
-  ]
+  ],
+  "copyright": "Copyright (C) 2025 Timothy Deters / R.E.C.A.L.L. Foundation",
+  "license": "GPL-3.0-or-later OR Commercial",
+  "patent": "Patent Pending: U.S. Application No. 63/898,838",
+  "licenseUrl": "https://www.gnu.org/licenses/gpl-3.0.html"
 }

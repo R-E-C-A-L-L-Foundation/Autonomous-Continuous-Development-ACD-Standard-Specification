@@ -887,8 +887,19 @@ api_error_t copyMemoryAsync(void* dst, const void* src, size_t count,
 
 ---
 
+## Copyright and Licensing
+
+**© 2025 Timothy Deters / R.E.C.A.L.L. Foundation**
+
+This specification and all associated materials are licensed under the **GNU General Public License v3.0** (GPL v3) or a commercial license obtainable from the R.E.C.A.L.L. Foundation.
+
+**Dual Licensing:**
+- **GPL v3**: You may use, modify, and distribute this specification and its implementations under the terms of the GPL v3. See the [LICENSE](LICENSE) file for the full license text.
+- **Commercial License**: Use of this specification or any derivative work under terms other than the GPL v3 requires a commercial license. Contact the R.E.C.A.L.L. Foundation for licensing inquiries.
+
+**Patent Notice:**  
+Patent Pending: U.S. Application No. 63/898,838
+
 **Document Status:** ✅ Active Standard  
 **Adoption Status:** Reference implementation available  
-**Spec text:** Creative Commons BY 4.0 (so it’s openly readable and citable)
-**Reference implementation:** LGPL 3.0
-**© 2025 Timothy Deters** — Autonomous Continuous Development (ACD) Standard Specification v1.0.
+**Version:** 1.0 — Autonomous Continuous Development (ACD) Standard Specification

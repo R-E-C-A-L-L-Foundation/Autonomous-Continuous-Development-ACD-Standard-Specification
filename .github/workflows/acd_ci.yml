@@ -1,4 +1,7 @@
 name: ACD CI/CD Pipeline
+# Copyright (C) 2025 Timothy Deters / R.E.C.A.L.L. Foundation
+# Licensed under GPL-3.0-or-later OR Commercial
+# Patent Pending: U.S. Application No. 63/898,838
 
 on:
   push:
