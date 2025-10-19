@@ -891,4 +891,4 @@ api_error_t copyMemoryAsync(void* dst, const void* src, size_t count,
 **Adoption Status:** Reference implementation available  
 **Spec text:** Creative Commons BY 4.0 (so it’s openly readable and citable)
 **Reference implementation:** LGPL 3.0
-**© “R.E.C.A.L.L. Foundation™** — Autonomous Continuous Development (ACD) Standard Specification v1.0.
+**© 2025 Timothy Deters** — Autonomous Continuous Development (ACD) Standard Specification v1.0.

@@ -1,0 +1,338 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/terminills/ACD_Specification/spec/ACD_SCHEMA_v1.0.json",
+  "title": "Autonomous Continuous Development (ACD) Standard Schema",
+  "version": "1.0.0",
+  "description": "JSON schema for validating ACD metadata in source code and trace artifacts",
+  
+  "definitions": {
+    "scis_metadata": {
+      "type": "object",
+      "description": "Source Code Intelligence Standard (SCIS) metadata block",
+      "properties": {
+        "AI_PHASE": {
+          "type": "string",
+          "description": "Cognitive segmentation - categorizes the code block into a logical, functional unit",
+          "examples": ["MEMORY_TRANSLATION", "KERNEL_DISPATCH", "STREAM_TRANSLATION"]
+        },
+        "AI_STATUS": {
+          "type": "string",
+          "enum": ["IMPLEMENTED", "PARTIAL", "NOT_STARTED", "FIXED", "DEPRECATED"],
+          "description": "Implementation state - declares the operational maturity of the code segment"
+        },
+        "AI_COMPLEXITY": {
+          "type": "string",
+          "enum": ["LOW", "MEDIUM", "HIGH", "CRITICAL"],
+          "description": "Risk profile - quantifies the inherent cognitive difficulty or risk"
+        },
+        "AI_NOTE": {
+          "type": "string",
+          "description": "Human-readable description of the code's purpose and behavior"
+        },
+        "AI_DEPENDENCIES": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Dependency chain - lists other phases this code depends on"
+        },
+        "AI_COMMIT": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{7,40}$",
+          "description": "Version tracking - Git commit hash when this code was last modified"
+        },
+        "AI_COMMIT_HISTORY": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{7,40}$"
+          },
+          "description": "Historical memory trail - list of previous Git commit hashes (newest first)"
+        },
+        "AI_PATTERN": {
+          "type": "string",
+          "description": "Implementation pattern - identifies the coding pattern or approach used"
+        },
+        "AI_STRATEGY": {
+          "type": "string",
+          "description": "Implementation strategy - describes the high-level approach taken"
+        },
+        "AI_VERSION": {
+          "type": "string",
+          "description": "Code version - version number for this implementation"
+        },
+        "AI_CHANGE": {
+          "type": "string",
+          "description": "Change description - describes the most recent change made"
+        },
+        "AI_TRAIN_HASH": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$",
+          "description": "Training hash - unique hash for AI training and pattern recognition"
+        },
+        "AI_CONTEXT": {
+          "type": "object",
+          "description": "Extended context - JSON object containing additional context-specific information"
+        },
+        "AI_METADATA": {
+          "description": "Additional metadata - general-purpose field for storing arbitrary metadata",
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "SOURCE_API_REF": {
+          "type": "string",
+          "description": "Translation map (source) - defines the source API this code translates from"
+        },
+        "TARGET_API_REF": {
+          "type": "string",
+          "description": "Translation map (target) - defines the target API this code translates to"
+        },
+        "COMPILER_ERR": {
+          "type": "string",
+          "description": "Compiler error context - records compiler errors encountered during development"
+        },
+        "RUNTIME_ERR": {
+          "type": "string",
+          "description": "Runtime error context - records runtime errors encountered during development"
+        },
+        "FIX_REASON": {
+          "type": "string",
+          "description": "Fix rationale - explains why a particular fix was necessary"
+        },
+        "HUMAN_OVERRIDE": {
+          "type": "string",
+          "description": "Human review - records human review and approval of AI-generated code"
+        },
+        "AI_ASSIGNED_TO": {
+          "type": "string",
+          "description": "Distributed agent coordination - agent ID or name assigned to this task"
+        },
+        "AI_TIMEOUT": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Distributed agent coordination - timeout in seconds for task completion"
+        },
+        "AI_MAX_RETRIES": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Distributed agent coordination - maximum retry attempts"
+        }
+      },
+      "required": ["AI_PHASE", "AI_STATUS"]
+    },
+    
+    "trace_artifact": {
+      "type": "object",
+      "description": "ACD Trace Artifact - complete diagnostic context for failures",
+      "properties": {
+        "timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "ISO 8601 timestamp of the event"
+        },
+        "session_id": {
+          "type": "string",
+          "description": "Unique session identifier"
+        },
+        "event_type": {
+          "type": "string",
+          "enum": ["build_error", "runtime_error", "test_failure", "validation_error"],
+          "description": "Type of event that triggered this trace"
+        },
+        "error_info": {
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": ["integer", "string"],
+              "description": "Error code"
+            },
+            "message": {
+              "type": "string",
+              "description": "Error message"
+            },
+            "location": {
+              "type": "object",
+              "properties": {
+                "file": {
+                  "type": "string",
+                  "description": "Source file path"
+                },
+                "line": {
+                  "type": "integer",
+                  "description": "Line number"
+                },
+                "function": {
+                  "type": "string",
+                  "description": "Function name"
+                }
+              },
+              "required": ["file", "line"]
+            }
+          },
+          "required": ["message"]
+        },
+        "acd_context": {
+          "$ref": "#/definitions/scis_metadata",
+          "description": "SCIS metadata from the code location"
+        },
+        "stack_trace": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Stack trace frames"
+        },
+        "environment": {
+          "type": "object",
+          "description": "Environment information"
+        },
+        "related_fixes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Related fix summary documents"
+        }
+      },
+      "required": ["timestamp", "event_type", "error_info"]
+    },
+    
+    "validation_report": {
+      "type": "object",
+      "description": "ACD Validation Report - metadata completeness and correctness report",
+      "properties": {
+        "metadata": {
+          "type": "object",
+          "properties": {
+            "acd_schema_version": {
+              "type": "string",
+              "description": "ACD schema version used for validation"
+            },
+            "files_processed": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Number of files processed"
+            },
+            "acd_metadata_found": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Number of SCIS metadata blocks found"
+            },
+            "errors": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Number of errors found"
+            },
+            "warnings": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Number of warnings found"
+            },
+            "timestamp_utc": {
+              "type": "string",
+              "format": "date-time",
+              "description": "ISO 8601 timestamp of validation"
+            }
+          },
+          "required": ["acd_schema_version", "files_processed", "acd_metadata_found", "timestamp_utc"]
+        },
+        "acd_metadata": {
+          "type": "array",
+          "items": {
+            "allOf": [
+              {
+                "$ref": "#/definitions/scis_metadata"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "repository": {
+                    "type": "string",
+                    "description": "Repository identifier"
+                  },
+                  "file": {
+                    "type": "string",
+                    "description": "Source file path"
+                  },
+                  "line": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "description": "Line number in source file"
+                  },
+                  "timestamp_utc": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "ISO 8601 timestamp when metadata was extracted"
+                  }
+                },
+                "required": ["file", "line"]
+              }
+            ]
+          },
+          "description": "Array of SCIS metadata blocks found in source code"
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "file": {
+                "type": "string"
+              },
+              "line": {
+                "type": "integer"
+              },
+              "message": {
+                "type": "string"
+              },
+              "severity": {
+                "type": "string",
+                "enum": ["error", "warning"]
+              }
+            },
+            "required": ["file", "message", "severity"]
+          },
+          "description": "Array of validation errors and warnings"
+        },
+        "warnings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "file": {
+                "type": "string"
+              },
+              "line": {
+                "type": "integer"
+              },
+              "message": {
+                "type": "string"
+              }
+            },
+            "required": ["file", "message"]
+          },
+          "description": "Array of validation warnings"
+        }
+      },
+      "required": ["metadata", "acd_metadata", "errors", "warnings"]
+    }
+  },
+  
+  "oneOf": [
+    {
+      "$ref": "#/definitions/scis_metadata"
+    },
+    {
+      "$ref": "#/definitions/trace_artifact"
+    },
+    {
+      "$ref": "#/definitions/validation_report"
+    }
+  ]
+}

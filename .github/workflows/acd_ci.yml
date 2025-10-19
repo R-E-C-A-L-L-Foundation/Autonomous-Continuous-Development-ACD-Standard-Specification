@@ -1,0 +1,288 @@
+name: ACD CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+  workflow_dispatch:
+
+env:
+  ACD_VERSION: "1.0.0"
+
+jobs:
+  validate-metadata:
+    name: Validate ACD Metadata
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+        
+    - name: Display ACD validator version
+      run: |
+        python3 src/validate_acd.py --version
+        
+    - name: Validate examples
+      run: |
+        python3 src/validate_acd.py examples/ \
+          --export acd_artifacts/example_validation.json \
+          --repository ${{ github.repository }} \
+          --verbose
+        
+    - name: Validate source code
+      run: |
+        python3 src/validate_acd.py src/ \
+          --export acd_artifacts/src_validation.json \
+          --repository ${{ github.repository }} \
+          --verbose || true
+        
+    - name: Upload validation artifacts
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: acd-validation-reports
+        path: acd_artifacts/*.json
+        retention-days: 30
+
+  validate-schema:
+    name: Validate JSON Schema
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+        
+    - name: Install jsonschema
+      run: pip install jsonschema
+        
+    - name: Validate ACD schema
+      run: |
+        python3 -c "
+        import json
+        import jsonschema
+        
+        # Load and validate the schema itself
+        with open('spec/ACD_SCHEMA_v1.0.json', 'r') as f:
+            schema = json.load(f)
+        
+        # Validate schema is valid JSON Schema
+        jsonschema.Draft7Validator.check_schema(schema)
+        print('✓ ACD Schema is valid JSON Schema Draft 7')
+        "
+
+  build-examples:
+    name: Build C++ Examples
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Install build dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y build-essential cmake
+        
+    - name: Display tool versions
+      run: |
+        g++ --version
+        cmake --version
+        
+    - name: Compile examples
+      run: |
+        mkdir -p build
+        cd build
+        
+        # Compile each example individually
+        for example in ../examples/*.cpp; do
+          example_name=$(basename "$example" .cpp)
+          echo "Compiling $example_name..."
+          g++ -std=c++17 -Wall -Wextra -o "$example_name" "$example"
+        done
+        
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: built-examples
+        path: build/*
+        retention-days: 7
+
+  lint-python:
+    name: Lint Python Code
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+        
+    - name: Install linting tools
+      run: |
+        pip install flake8 pylint
+        
+    - name: Run flake8
+      run: |
+        flake8 src/ --count --select=E9,F63,F7,F82 --show-source --statistics
+        flake8 src/ --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+        
+    - name: Run pylint
+      run: |
+        pylint src/ --exit-zero --max-line-length=127
+
+  test-bootstrap:
+    name: Test Bootstrap Script
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+        
+    - name: Install build dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y build-essential cmake
+        
+    - name: Run bootstrap script
+      run: |
+        bash scripts/bootstrap.sh
+        
+    - name: Verify directory structure
+      run: |
+        for dir in spec src examples scripts tests ci acd_artifacts artifacts; do
+          if [ -d "$dir" ]; then
+            echo "✓ $dir directory exists"
+          else
+            echo "✗ $dir directory missing"
+            exit 1
+          fi
+        done
+
+  integration-test:
+    name: Integration Test
+    runs-on: ubuntu-latest
+    needs: [validate-metadata, validate-schema, build-examples]
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+        
+    - name: Download validation artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: acd-validation-reports
+        path: acd_artifacts/
+        
+    - name: Download build artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: built-examples
+        path: build/
+        
+    - name: Run integration tests
+      run: |
+        echo "Integration test: Verify validation reports exist"
+        ls -lh acd_artifacts/*.json
+        
+        echo "Integration test: Verify examples built successfully"
+        ls -lh build/
+        
+        echo "Integration test: Check validation report structure"
+        python3 -c "
+        import json
+        
+        with open('acd_artifacts/example_validation.json', 'r') as f:
+            report = json.load(f)
+        
+        assert 'metadata' in report
+        assert 'acd_metadata' in report
+        assert 'errors' in report
+        assert 'warnings' in report
+        
+        print(f'✓ Found {report[\"metadata\"][\"acd_metadata_found\"]} SCIS metadata blocks')
+        print(f'✓ Processed {report[\"metadata\"][\"files_processed\"]} files')
+        print(f'✓ Validation report structure is correct')
+        "
+        
+    - name: Generate integration summary
+      run: |
+        echo "# ACD CI/CD Integration Summary" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "## Validation Results" >> $GITHUB_STEP_SUMMARY
+        
+        python3 -c "
+        import json
+        import os
+        
+        with open('acd_artifacts/example_validation.json', 'r') as f:
+            report = json.load(f)
+        
+        metadata = report['metadata']
+        
+        print(f'- **Files Processed**: {metadata[\"files_processed\"]}')
+        print(f'- **SCIS Metadata Blocks Found**: {metadata[\"acd_metadata_found\"]}')
+        print(f'- **Errors**: {metadata[\"errors\"]}')
+        print(f'- **Warnings**: {metadata[\"warnings\"]}')
+        print()
+        print('## Phase Distribution')
+        
+        for phase, count in metadata.get('phase_distribution', {}).items():
+            print(f'- **{phase}**: {count}')
+        
+        print()
+        print('## Status Distribution')
+        
+        for status, count in metadata.get('status_distribution', {}).items():
+            print(f'- **{status}**: {count}')
+        " >> $GITHUB_STEP_SUMMARY
+
+  publish-artifacts:
+    name: Publish Release Artifacts
+    runs-on: ubuntu-latest
+    needs: [integration-test]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Download all artifacts
+      uses: actions/download-artifact@v4
+      with:
+        path: artifacts/
+        
+    - name: Create artifact package
+      run: |
+        mkdir -p release/
+        tar czf release/acd-artifacts-${{ github.sha }}.tar.gz artifacts/
+        
+    - name: Upload release artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: acd-release-artifacts
+        path: release/*.tar.gz
+        retention-days: 90
