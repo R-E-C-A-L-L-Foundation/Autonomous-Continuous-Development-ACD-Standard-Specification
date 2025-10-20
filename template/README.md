@@ -1,6 +1,6 @@
 # [Your Project Name] - ACD Enabled
 
-This project follows the [Autonomous Continuous Development (ACD) Standard v1.0](https://github.com/R-E-C-A-L-L-Foundation/Autonomous-Continuous-Development-ACD-Standard-Specification).
+This project follows the [Autonomous Continuous Development (ACD) Standard v1.0](https://github.com/RECALLInstituteACD/Autonomous-Continuous-Development-ACD-Standard-Specification).
 
 ## Quick Start
 
@@ -88,10 +88,10 @@ The Autonomous Continuous Development (ACD) standard transforms stateless AI age
 
 ## Documentation
 
-- [ACD Specification](https://github.com/R-E-C-A-L-L-Foundation/Autonomous-Continuous-Development-ACD-Standard-Specification)
+- [ACD Specification](https://github.com/RECALLInstituteACD/Autonomous-Continuous-Development-ACD-Standard-Specification)
 - [Implementation Guide](docs/IMPLEMENTATION_GUIDE.md)
 - [Fix Summaries](docs/fix_summaries/)
-- [Tools Guide](https://github.com/R-E-C-A-L-L-Foundation/Autonomous-Continuous-Development-ACD-Standard-Specification/blob/main/docs/TOOLS_GUIDE.md)
+- [Tools Guide](https://github.com/RECALLInstituteACD/Autonomous-Continuous-Development-ACD-Standard-Specification/blob/main/docs/TOOLS_GUIDE.md)
 
 ## Contributing
 
@@ -107,5 +107,5 @@ When contributing to this project:
 
 ---
 
-**Powered by the [ACD Standard v1.0](https://github.com/R-E-C-A-L-L-Foundation/Autonomous-Continuous-Development-ACD-Standard-Specification)**  
-© 2025 Timothy Deters / R.E.C.A.L.L. Foundation
+**Powered by the [ACD Standard v1.0](https://github.com/RECALLInstituteACD/Autonomous-Continuous-Development-ACD-Standard-Specification)**  
+© 2025 Timothy Deters / The RECALL Institute for Autonomous Continuous Development

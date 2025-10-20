@@ -389,7 +389,7 @@
       "$ref": "#/definitions/validation_report"
     }
   ],
-  "copyright": "Copyright (C) 2025 Timothy Deters / R.E.C.A.L.L. Foundation",
+  "copyright": "Copyright (C) 2025 Timothy Deters / The RECALL Institute for Autonomous Continuous Development",
   "license": "GPL-3.0-or-later OR Commercial",
   "patent": "Patent Pending: U.S. Application No. 63/898,838",
   "licenseUrl": "https://www.gnu.org/licenses/gpl-3.0.html"

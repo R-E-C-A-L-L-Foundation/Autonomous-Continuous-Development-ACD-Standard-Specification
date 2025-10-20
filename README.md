@@ -70,7 +70,7 @@ Project Structure:
 
 Compliance:
 - Follow the ACD Standard Specification from 
-  https://github.com/R-E-C-A-L-L-Foundation/Autonomous-Continuous-Development-ACD-Standard-Specification
+  https://github.com/RECALLInstituteACD/Autonomous-Continuous-Development-ACD-Standard-Specification
 - Enable autonomous agents to understand, complete, and improve the codebase
 - Provide complete historical context for all decisions
 - Make all code machine-readable for AI training and correlation
@@ -106,7 +106,7 @@ Generate a complete, production-ready implementation with:
 - CI/CD integration for continuous validation
 
 Follow the ACD Standard from:
-https://github.com/R-E-C-A-L-L-Foundation/Autonomous-Continuous-Development-ACD-Standard-Specification
+https://github.com/RECALLInstituteACD/Autonomous-Continuous-Development-ACD-Standard-Specification
 ```
 
 These prompts ensure AI generates code that is immediately compatible with autonomous 
@@ -985,13 +985,13 @@ api_error_t copyMemoryAsync(void* dst, const void* src, size_t count,
 
 ## Copyright and Licensing
 
-**© 2025 Timothy Deters / R.E.C.A.L.L. Foundation**
+**© 2025 Timothy Deters / The RECALL Institute for Autonomous Continuous Development**
 
-This specification and all associated materials are licensed under the **GNU General Public License v3.0** (GPL v3) or a commercial license obtainable from the R.E.C.A.L.L. Foundation.
+This specification and all associated materials are licensed under the **GNU General Public License v3.0** (GPL v3) or a commercial license obtainable from The RECALL Institute for Autonomous Continuous Development.
 
 **Dual Licensing:**
 - **GPL v3**: You may use, modify, and distribute this specification and its implementations under the terms of the GPL v3. See the [LICENSE](LICENSE) file for the full license text.
-- **Commercial License**: Use of this specification or any derivative work under terms other than the GPL v3 requires a commercial license. Contact the R.E.C.A.L.L. Foundation for licensing inquiries.
+- **Commercial License**: Use of this specification or any derivative work under terms other than the GPL v3 requires a commercial license. Contact The RECALL Institute for Autonomous Continuous Development for licensing inquiries.
 
 **Patent Notice:**  
 Patent Pending: U.S. Application No. 63/898,838

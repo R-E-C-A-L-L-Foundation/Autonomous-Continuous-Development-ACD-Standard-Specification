@@ -234,7 +234,7 @@ Five comprehensive guides for all experience levels.
 - **Template Location**: `ACD_Specification/template/`
 - **Usage Guide**: `TEMPLATE_USAGE.md`
 - **ACD Specification**: `README.md`
-- **GitHub**: https://github.com/R-E-C-A-L-L-Foundation/Autonomous-Continuous-Development-ACD-Standard-Specification
+- **GitHub**: https://github.com/RECALLInstituteACD/Autonomous-Continuous-Development-ACD-Standard-Specification
 
 ## 📋 Checklist for Users
 
@@ -278,4 +278,4 @@ After setup, you have:
 ---
 
 **Powered by the ACD Standard v1.0**  
-© 2025 Timothy Deters / R.E.C.A.L.L. Foundation
+© 2025 Timothy Deters / The RECALL Institute for Autonomous Continuous Development

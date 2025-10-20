@@ -364,8 +364,8 @@ python3 scripts/acd_parser.py src/ --markdown report.md
 
 ## Getting Help
 
-- [ACD Specification](https://github.com/R-E-C-A-L-L-Foundation/Autonomous-Continuous-Development-ACD-Standard-Specification)
-- [Tools Guide](https://github.com/R-E-C-A-L-L-Foundation/Autonomous-Continuous-Development-ACD-Standard-Specification/blob/main/docs/TOOLS_GUIDE.md)
+- [ACD Specification](https://github.com/RECALLInstituteACD/Autonomous-Continuous-Development-ACD-Standard-Specification)
+- [Tools Guide](https://github.com/RECALLInstituteACD/Autonomous-Continuous-Development-ACD-Standard-Specification/blob/main/docs/TOOLS_GUIDE.md)
 - [Examples](examples/)
 
 ## Next Steps
@@ -378,4 +378,4 @@ python3 scripts/acd_parser.py src/ --markdown report.md
 
 ---
 
-**Powered by the [ACD Standard v1.0](https://github.com/R-E-C-A-L-L-Foundation/Autonomous-Continuous-Development-ACD-Standard-Specification)**
+**Powered by the [ACD Standard v1.0](https://github.com/RECALLInstituteACD/Autonomous-Continuous-Development-ACD-Standard-Specification)**

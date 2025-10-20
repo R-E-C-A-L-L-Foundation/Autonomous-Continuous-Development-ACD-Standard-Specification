@@ -145,8 +145,8 @@ When you fix an issue:
 
 ### External Resources
 
-- [ACD Specification](https://github.com/R-E-C-A-L-L-Foundation/Autonomous-Continuous-Development-ACD-Standard-Specification)
-- [Tools Guide](https://github.com/R-E-C-A-L-L-Foundation/Autonomous-Continuous-Development-ACD-Standard-Specification/blob/main/docs/TOOLS_GUIDE.md)
+- [ACD Specification](https://github.com/RECALLInstituteACD/Autonomous-Continuous-Development-ACD-Standard-Specification)
+- [Tools Guide](https://github.com/RECALLInstituteACD/Autonomous-Continuous-Development-ACD-Standard-Specification/blob/main/docs/TOOLS_GUIDE.md)
 
 ---
 
@@ -236,8 +236,8 @@ pip install pyyaml
 
 ### Get Support
 
-- GitHub Issues: https://github.com/R-E-C-A-L-L-Foundation/Autonomous-Continuous-Development-ACD-Standard-Specification/issues
-- Documentation: https://github.com/R-E-C-A-L-L-Foundation/Autonomous-Continuous-Development-ACD-Standard-Specification
+- GitHub Issues: https://github.com/RECALLInstituteACD/Autonomous-Continuous-Development-ACD-Standard-Specification/issues
+- Documentation: https://github.com/RECALLInstituteACD/Autonomous-Continuous-Development-ACD-Standard-Specification
 
 ---
 
@@ -259,4 +259,4 @@ Your codebase now has the intelligence and historical memory to work effectively
 
 ---
 
-**Powered by the [ACD Standard v1.0](https://github.com/R-E-C-A-L-L-Foundation/Autonomous-Continuous-Development-ACD-Standard-Specification)**
+**Powered by the [ACD Standard v1.0](https://github.com/RECALLInstituteACD/Autonomous-Continuous-Development-ACD-Standard-Specification)**

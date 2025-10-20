@@ -73,11 +73,11 @@ For detailed usage instructions, see:
 
 ## Support
 
-- **Specification**: https://github.com/R-E-C-A-L-L-Foundation/Autonomous-Continuous-Development-ACD-Standard-Specification
-- **Issues**: https://github.com/R-E-C-A-L-L-Foundation/Autonomous-Continuous-Development-ACD-Standard-Specification/issues
-- **Tools Guide**: https://github.com/R-E-C-A-L-L-Foundation/Autonomous-Continuous-Development-ACD-Standard-Specification/blob/main/docs/TOOLS_GUIDE.md
+- **Specification**: https://github.com/RECALLInstituteACD/Autonomous-Continuous-Development-ACD-Standard-Specification
+- **Issues**: https://github.com/RECALLInstituteACD/Autonomous-Continuous-Development-ACD-Standard-Specification/issues
+- **Tools Guide**: https://github.com/RECALLInstituteACD/Autonomous-Continuous-Development-ACD-Standard-Specification/blob/main/docs/TOOLS_GUIDE.md
 
 ---
 
 **Part of the ACD Standard v1.0**  
-© 2025 Timothy Deters / R.E.C.A.L.L. Foundation
+© 2025 Timothy Deters / The RECALL Institute for Autonomous Continuous Development

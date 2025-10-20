@@ -81,7 +81,7 @@ If you have an existing project:
 
 ```bash
 # Clone the ACD Specification repository
-git clone https://github.com/R-E-C-A-L-L-Foundation/Autonomous-Continuous-Development-ACD-Standard-Specification.git /tmp/acd_spec
+git clone https://github.com/RECALLInstituteACD/Autonomous-Continuous-Development-ACD-Standard-Specification.git /tmp/acd_spec
 
 # Copy template to your project
 cd /path/to/your/project
@@ -103,7 +103,7 @@ For a new project:
 
 ```bash
 # Clone the ACD Specification repository
-git clone https://github.com/R-E-C-A-L-L-Foundation/Autonomous-Continuous-Development-ACD-Standard-Specification.git /tmp/acd_spec
+git clone https://github.com/RECALLInstituteACD/Autonomous-Continuous-Development-ACD-Standard-Specification.git /tmp/acd_spec
 
 # Create your project from template
 mkdir my-new-project
@@ -143,7 +143,7 @@ mkdir -p .acd docs/fix_summaries examples scripts src tests .github/workflows
 ```bash
 # Download from the template directory in the ACD Specification repo
 # Copy each file individually from:
-# https://github.com/R-E-C-A-L-L-Foundation/Autonomous-Continuous-Development-ACD-Standard-Specification/tree/main/template
+# https://github.com/RECALLInstituteACD/Autonomous-Continuous-Development-ACD-Standard-Specification/tree/main/template
 ```
 
 3. Run initialization:
@@ -448,16 +448,16 @@ git push
 **Q: Can't download ACD tools**
 ```bash
 # Solution: Download manually from GitHub
-# https://github.com/R-E-C-A-L-L-Foundation/Autonomous-Continuous-Development-ACD-Standard-Specification/tree/main/src
-# https://github.com/R-E-C-A-L-L-Foundation/Autonomous-Continuous-Development-ACD-Standard-Specification/tree/main/scripts
+# https://github.com/RECALLInstituteACD/Autonomous-Continuous-Development-ACD-Standard-Specification/tree/main/src
+# https://github.com/RECALLInstituteACD/Autonomous-Continuous-Development-ACD-Standard-Specification/tree/main/scripts
 ```
 
 ### Getting Help
 
 - **Documentation**: Read `docs/IMPLEMENTATION_GUIDE.md`
 - **Examples**: Check `examples/` directory
-- **Specification**: https://github.com/R-E-C-A-L-L-Foundation/Autonomous-Continuous-Development-ACD-Standard-Specification
-- **Issues**: https://github.com/R-E-C-A-L-L-Foundation/Autonomous-Continuous-Development-ACD-Standard-Specification/issues
+- **Specification**: https://github.com/RECALLInstituteACD/Autonomous-Continuous-Development-ACD-Standard-Specification
+- **Issues**: https://github.com/RECALLInstituteACD/Autonomous-Continuous-Development-ACD-Standard-Specification/issues
 
 ## Next Steps
 
@@ -486,7 +486,7 @@ This template is maintained as part of the ACD Specification. To get updates:
 ```bash
 # Check for template updates
 cd /tmp
-git clone https://github.com/R-E-C-A-L-L-Foundation/Autonomous-Continuous-Development-ACD-Standard-Specification.git
+git clone https://github.com/RECALLInstituteACD/Autonomous-Continuous-Development-ACD-Standard-Specification.git
 cd ACD_Specification/template
 
 # Compare with your project
@@ -497,8 +497,8 @@ diff -r . /path/to/your/project
 
 ---
 
-**Powered by the [ACD Standard v1.0](https://github.com/R-E-C-A-L-L-Foundation/Autonomous-Continuous-Development-ACD-Standard-Specification)**  
-© 2025 Timothy Deters / R.E.C.A.L.L. Foundation
+**Powered by the [ACD Standard v1.0](https://github.com/RECALLInstituteACD/Autonomous-Continuous-Development-ACD-Standard-Specification)**  
+© 2025 Timothy Deters / The RECALL Institute for Autonomous Continuous Development
 
 For questions, issues, or contributions, visit:  
-https://github.com/R-E-C-A-L-L-Foundation/Autonomous-Continuous-Development-ACD-Standard-Specification
+https://github.com/RECALLInstituteACD/Autonomous-Continuous-Development-ACD-Standard-Specification

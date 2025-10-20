@@ -308,7 +308,7 @@ validation:
 - **Specification**: [README.md](../README.md)
 - **Implementation Guide**: [IMPLEMENTATION_GUIDE.md](IMPLEMENTATION_GUIDE.md)
 - **Template Usage**: [TEMPLATE_USAGE.md](../../TEMPLATE_USAGE.md)
-- **GitHub**: https://github.com/R-E-C-A-L-L-Foundation/Autonomous-Continuous-Development-ACD-Standard-Specification
+- **GitHub**: https://github.com/RECALLInstituteACD/Autonomous-Continuous-Development-ACD-Standard-Specification
 
 ---
 

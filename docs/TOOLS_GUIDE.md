@@ -1,9 +1,9 @@
 # ACD Tools and Examples Guide
 
-**Copyright (C) 2025 Timothy Deters / R.E.C.A.L.L. Foundation**
+**Copyright (C) 2025 Timothy Deters / The RECALL Institute for Autonomous Continuous Development**
 
 This document is part of the ACD Specification, licensed under the GNU General Public License v3.0.  
-For commercial licensing inquiries, contact the R.E.C.A.L.L. Foundation.  
+For commercial licensing inquiries, contact The RECALL Institute for Autonomous Continuous Development.  
 Patent Pending: U.S. Application No. 63/898,838
 
 ---

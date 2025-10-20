@@ -152,7 +152,7 @@ template/
 ## Contributing
 
 To suggest improvements to the template:
-1. Open an issue at https://github.com/R-E-C-A-L-L-Foundation/Autonomous-Continuous-Development-ACD-Standard-Specification/issues
+1. Open an issue at https://github.com/RECALLInstituteACD/Autonomous-Continuous-Development-ACD-Standard-Specification/issues
 2. Describe the enhancement
 3. Provide use cases and examples
 
@@ -169,11 +169,11 @@ To suggest improvements to the template:
 
 This template is part of the ACD Specification and follows the same licensing:
 - GPL v3.0 for open source use
-- Commercial license available from R.E.C.A.L.L. Foundation
+- Commercial license available from The RECALL Institute for Autonomous Continuous Development
 
-© 2025 Timothy Deters / R.E.C.A.L.L. Foundation
+© 2025 Timothy Deters / The RECALL Institute for Autonomous Continuous Development
 
 ---
 
 **For the latest updates, visit:**  
-https://github.com/R-E-C-A-L-L-Foundation/Autonomous-Continuous-Development-ACD-Standard-Specification
+https://github.com/RECALLInstituteACD/Autonomous-Continuous-Development-ACD-Standard-Specification
