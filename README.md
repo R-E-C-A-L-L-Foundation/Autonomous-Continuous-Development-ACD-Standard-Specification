@@ -19,6 +19,102 @@ This specification defines a common, machine-readable protocol for embedding **c
 
 ---
 
+## 🚀 Quick Start with ACD Template
+
+**Want to adopt ACD in your project right now?** Use our drop-in repository template:
+
+```bash
+# For existing projects
+cd /path/to/your/project
+cp -r /path/to/ACD_Specification/template/* .
+cp -r /path/to/ACD_Specification/template/.acd .
+./scripts/acd_init.sh
+
+# For new projects
+mkdir my-project && cd my-project && git init
+cp -r /path/to/ACD_Specification/template/* .
+./scripts/acd_init.sh
+```
+
+**See [TEMPLATE_USAGE.md](TEMPLATE_USAGE.md) for complete instructions.**
+
+The template includes:
+- ✅ Pre-configured directory structure
+- ✅ GitHub Actions CI/CD integration
+- ✅ Example code with SCIS metadata
+- ✅ Validation and analysis tools
+- ✅ Comprehensive documentation
+
+### 🤖 Bootstrap Your Project with AI
+
+**Starting from zero code?** Use this example prompt to have AI bootstrap your ACD-compliant project:
+
+```
+Create a complete [project type, e.g., "REST API server" or "data processing pipeline"] 
+following the Autonomous Continuous Development (ACD) Standard Specification v1.0.
+
+Requirements:
+- Implement full ACD metadata (AI_PHASE, AI_STATUS, AI_COMPLEXITY, AI_NOTE, AI_DEPENDENCIES)
+- Use the Source Code Intelligence Standard (SCIS) format for all code comments
+- Include comprehensive README following ACD documentation standards
+- Add breadcrumb navigation between related components
+- Document all design decisions and reasoning in code metadata
+- Create fix summary templates for future issue resolution
+- Maintain complete traceability for autonomous development
+
+Project Structure:
+- Use clear phase definitions (e.g., INIT, MEMORY_MANAGEMENT, API_TRANSLATION, ERROR_HANDLING)
+- Mark implementation status accurately (IMPLEMENTED, PARTIAL, NOT_STARTED)
+- Rate complexity honestly (LOW, MEDIUM, HIGH, CRITICAL)
+- Document all dependencies between phases
+
+Compliance:
+- Follow the ACD Standard Specification from 
+  https://github.com/R-E-C-A-L-L-Foundation/Autonomous-Continuous-Development-ACD-Standard-Specification
+- Enable autonomous agents to understand, complete, and improve the codebase
+- Provide complete historical context for all decisions
+- Make all code machine-readable for AI training and correlation
+
+Please generate:
+1. Complete project structure with ACD metadata
+2. README.md in ACD documentation style (spec-compliant, zero-fluff)
+3. Example code files with proper SCIS tags
+4. Development workflow documentation
+5. Integration with standard toolchains (compiler, debugger, CI/CD)
+```
+
+**Example with More Specificity:**
+
+```
+Create an HTTP REST API server with full ACD Standard Specification compliance.
+
+This server should handle client requests and provide data access. Every function must include:
+
+- AI_PHASE: Component category (REQUEST_HANDLING, DATA_VALIDATION, RESPONSE_GENERATION, etc.)
+- AI_STATUS: Implementation state (IMPLEMENTED, PARTIAL, NOT_STARTED)
+- AI_COMPLEXITY: Risk level (LOW, MEDIUM, HIGH, CRITICAL)
+- AI_NOTE: Clear description of purpose and behavior
+- AI_DEPENDENCIES: Required phases for this component
+- AI_COMMIT: Git commit hash for version tracking
+
+Generate a complete, production-ready implementation with:
+- Structured metadata for autonomous development
+- Clear phase definitions and dependencies
+- Complete audit trail for all endpoints
+- Error handling with proper status codes
+- Input validation and sanitization
+- CI/CD integration for continuous validation
+
+Follow the ACD Standard from:
+https://github.com/R-E-C-A-L-L-Foundation/Autonomous-Continuous-Development-ACD-Standard-Specification
+```
+
+These prompts ensure AI generates code that is immediately compatible with autonomous 
+development workflows, complete with the metadata needed for AI agents to understand, 
+maintain, and improve the codebase over time.
+
+---
+
 ## Purpose
 
 **To transform stateless AI agents into context-aware collaborators** by providing complete historical tracking of every decision, change, and reasoning in a codebase.

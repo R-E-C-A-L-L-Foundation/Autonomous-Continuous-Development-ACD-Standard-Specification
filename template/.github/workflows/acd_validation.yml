@@ -1,0 +1,59 @@
+name: ACD Validation
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  validate-acd:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0  # Fetch full history for commit tracking
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pyyaml
+    
+    - name: Validate ACD Metadata
+      run: |
+        python3 scripts/validate_acd.py src/ --export acd_artifacts/metadata.json
+    
+    - name: Generate ACD Reports
+      run: |
+        python3 scripts/acd_parser.py src/ --analyze --json acd_artifacts/analysis.json --markdown acd_artifacts/report.md
+    
+    - name: Upload ACD Artifacts
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: acd-artifacts
+        path: acd_artifacts/
+    
+    - name: Comment PR with ACD Report
+      if: github.event_name == 'pull_request'
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const fs = require('fs');
+          try {
+            const report = fs.readFileSync('acd_artifacts/report.md', 'utf8');
+            await github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '## ACD Validation Report\n\n' + report
+            });
+          } catch (error) {
+            console.log('No report file generated or error reading it:', error);
+          }

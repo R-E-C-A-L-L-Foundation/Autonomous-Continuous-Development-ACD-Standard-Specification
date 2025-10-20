@@ -1,0 +1,138 @@
+# ACD Configuration File
+# This file configures the Autonomous Continuous Development (ACD) standard
+# for your repository. Customize these settings for your project.
+
+# Project Information
+project:
+  name: "Your Project Name"
+  repository: "your-org/your-repo"
+  description: "Brief description of your project"
+  acd_version: "1.0.0"
+
+# Phase Definitions
+# Define the logical phases used in your codebase
+phases:
+  - name: "INIT"
+    description: "Initialization and setup code"
+    complexity: "MEDIUM"
+  
+  - name: "ERROR_HANDLING"
+    description: "Error handling and validation"
+    complexity: "HIGH"
+  
+  - name: "MEMORY_MANAGEMENT"
+    description: "Memory allocation and deallocation"
+    complexity: "HIGH"
+  
+  - name: "API_TRANSLATION"
+    description: "API wrapper and translation layer"
+    complexity: "MEDIUM"
+  
+  - name: "CORE_LOGIC"
+    description: "Core business logic"
+    complexity: "HIGH"
+  
+  # Add your custom phases here
+  # - name: "YOUR_PHASE"
+  #   description: "Description of your phase"
+  #   complexity: "MEDIUM"
+
+# Validation Settings
+validation:
+  # Require these tags for all functions
+  required_tags:
+    - "AI_PHASE"
+    - "AI_STATUS"
+  
+  # Recommend these tags
+  recommended_tags:
+    - "AI_COMPLEXITY"
+    - "AI_NOTE"
+    - "AI_DEPENDENCIES"
+    - "AI_COMMIT"
+  
+  # File patterns to validate
+  include_patterns:
+    - "**/*.cpp"
+    - "**/*.c"
+    - "**/*.h"
+    - "**/*.hpp"
+    - "**/*.py"
+    - "**/*.js"
+    - "**/*.ts"
+  
+  # File patterns to exclude
+  exclude_patterns:
+    - "**/node_modules/**"
+    - "**/build/**"
+    - "**/dist/**"
+    - "**/vendor/**"
+    - "**/.git/**"
+    - "**/test/**"
+    - "**/*_test.*"
+
+# Export Settings
+export:
+  # Export formats to generate
+  formats:
+    - "json"
+    - "markdown"
+  
+  # Output directory for exports
+  output_dir: "acd_artifacts"
+  
+  # Include commit history in exports
+  include_history: true
+
+# Git Integration
+git:
+  # Automatically update AI_COMMIT on commit
+  auto_update_commit: true
+  
+  # Maintain AI_COMMIT_HISTORY
+  maintain_history: true
+  
+  # Maximum history length (0 = unlimited)
+  max_history_length: 10
+
+# CI/CD Settings
+ci:
+  # Fail build on validation errors
+  fail_on_error: true
+  
+  # Fail build on warnings
+  fail_on_warning: false
+  
+  # Generate reports
+  generate_reports: true
+  
+  # Upload artifacts
+  upload_artifacts: true
+
+# Artifact Settings
+artifacts:
+  # Directory for ACD artifacts
+  directory: "acd_artifacts"
+  
+  # Keep fix summaries in docs
+  fix_summaries_dir: "docs/fix_summaries"
+  
+  # Keep trace artifacts
+  trace_dir: "acd_artifacts/traces"
+
+# Tool Settings
+tools:
+  # GDB extension settings
+  gdb:
+    enabled: true
+    auto_load: true
+  
+  # Parser settings
+  parser:
+    enabled: true
+    generate_graphs: true
+  
+  # Validator settings
+  validator:
+    enabled: true
+    verbose: false

@@ -1,0 +1,49 @@
+# Build artifacts
+build/
+dist/
+*.o
+*.obj
+*.exe
+*.out
+*.app
+*.so
+*.dylib
+*.dll
+*.a
+*.lib
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+.venv
+
+# IDEs and editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Temporary files
+*.log
+*.tmp
+/tmp/
+temp/
+
+# ACD artifacts (keep structure, ignore generated files)
+acd_artifacts/*.json
+acd_artifacts/*.md
+acd_artifacts/*.csv
+acd_artifacts/*.dot
+acd_artifacts/*.png
+acd_artifacts/traces/*.json
+
+# Test results
+test_results/
+*.test
